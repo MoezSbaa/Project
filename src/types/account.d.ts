@@ -1,7 +1,8 @@
 type  Account = {
-    firstName : string,
-    lastName: string,
+    name : string,
+    username: string,
     email: string,
     phone: string,
-    address: string
+    adress: string,
+    specialite: string,
 }

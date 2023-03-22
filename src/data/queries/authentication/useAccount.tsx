@@ -4,7 +4,7 @@ import request from '../../../api/network';
 import queryClient from '../../Client';
 import queriesKeys from '../../keys';
 
-export default function useAccount(role:string,callback?: Callback<Account>) {
+export default function useAccount(callback?: Callback<Account>) {
     const token = localStorage.getItem('token');
 
     function logout() {
@@ -17,7 +17,7 @@ export default function useAccount(role:string,callback?: Callback<Account>) {
     function fetchAccount() {
         return request<Account>({
             method: 'get',
-            url: `/user/${role}`,
+            url: `/users/me`,
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
@@ -33,7 +33,7 @@ export default function useAccount(role:string,callback?: Callback<Account>) {
             if (data) {
                 callback?.(false, data);
             }
-        },
+        }, 
         onError() {
             callback?.(true);
         },
