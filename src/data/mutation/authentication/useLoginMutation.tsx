@@ -16,6 +16,7 @@ export default function useLoginMutation(callback?: Callback<any>) {
         },
         onSuccess(response) {
             const { token } = response.data;
+            localStorage.setItem("role",response.data.roles[0])
             navigate("/dashboard")
             callback?.(false, response.data);
             userDidSignIn(token);

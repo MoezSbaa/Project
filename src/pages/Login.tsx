@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useLoginMutation from "../data/mutation/authentication/useLoginMutation";
 
 const Login = () => {
@@ -27,8 +28,8 @@ const Login = () => {
 
   return (
     <main className="h-screen w-full flex items-center  justify-center flex-col">
-      <div className="w-1/3 h-1/3 border-[#9dca00] border-2 rounded-lg flex items-center  justify-center flex-col p-1">
-        <h1 className="text-[#9dca00] font-extrabold ">Login</h1>
+      <div className="w-1/3 h-1/3 border-[#9dca00] border-2 rounded-lg flex items-center  justify-center flex-col p-3">
+        <h1 className="text-[#9dca00] font-extrabold text-3xl">Login</h1>
         <form className="  w-full flex flex-col justify-center items-center p-3" onSubmit={handleSubmit}>
           <div className=" p-3 flex justify-between w-full items-center">
             <label htmlFor="">Username</label>
@@ -55,6 +56,9 @@ const Login = () => {
               Login
             </button>
           </div>
+          <span className="text-xl">Don't Have an account?</span>
+          <Link to="/registerUser" className="hover:text-[#9dca00]">Register as a client</Link>
+          <Link to="/registerCoach" className=" hover:text-[#9dca00]">Register as a coach</Link>
         </form>
       </div>
     </main>

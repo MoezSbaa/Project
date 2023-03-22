@@ -6,6 +6,7 @@ import Splash from "../components/Splash";
 import Loadable from "../components/Loadable";
 import Profile from '../pages/Profile';
 import UserList from '../pages/dashboard/UserList';
+import NavBar from '../Layout/NavBar';
 const About = Loadable(lazy(() => import('../pages/About')));
 const Login = Loadable(lazy(() => import('../pages/Login')));
 
@@ -26,17 +27,16 @@ export default function Router() {
         },
         {
             path: UnauthorizedPaths.login,
-            element: <Profile/>
+            element: <Login/>
         },
         {
             path: '/dashboard',
-            element: <UserList users={[{
-                name:"aziz",
-                email:"aziz@gmail.com",
-                avatar:"hiii",
-                username:"azizos",
-                id:1
-            }]} />
+            element: <div>
+
+                <NavBar/>
+                <UserList role="user"/>
+                <UserList role="coach"/>
+                </div>
         },
     ])
 }

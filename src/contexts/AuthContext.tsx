@@ -1,6 +1,6 @@
 import { createContext, PropsWithChildren, useMemo, useReducer } from 'react';
 import produce from 'immer';
-import useAccount from "../data/queries/authentication/useAccount";
+import useAccount from "./../data/queries/authentication/useAccount";
 
 interface AuthContextState {
     isInitialized: boolean;
