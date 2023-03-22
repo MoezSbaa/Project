@@ -1,1 +1,1 @@
-export const ApiURL = 'https://malahbecha-tunnel-8008.webtv-solution.dev/api' ;
+export const ApiURL = 'http://localhost:8008/api' ;

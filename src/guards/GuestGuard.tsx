@@ -10,7 +10,7 @@ export default function GuestGuard(props: PropsWithChildren) {
     const { isAuthorized } = useAuth();
 
     if (isAuthorized) {
-        return <Navigate to={AuthorizedPaths.home} replace />;
+        return <Navigate to={AuthorizedPaths.dashboard} replace />;
     }
 
     return (
