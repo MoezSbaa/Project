@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import useAuth from "./hooks/contexts/useAuth";
 import {BrowserRouter} from "react-router-dom";
 import Router from "./navigation/Router";

@@ -1,8 +1,11 @@
 import { useState } from "react";
+import useLoginMutation from "../data/mutation/authentication/useLoginMutation";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const {mutate} = useLoginMutation()
 
   const handleUsernameChange = (event: any) => {
     setUsername(event.target.value);
@@ -14,7 +17,12 @@ const Login = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    console.log()
+    console.log(username, password)
+
+    mutate({
+      username,
+      password
+    })
   };
 
   return (
@@ -27,6 +35,7 @@ const Login = () => {
             <input
               type="text"
               className="border-[#9dca00] border-2 rounded-lg w-3/4 p-1"
+              onChange={handleUsernameChange}
             />
           </div>
           <div className="p-3 flex  justify-between w-full items-center">
@@ -34,6 +43,7 @@ const Login = () => {
             <input
               type="password"
               className="w-3/4 border-[#9dca00] border-2 rounded-lg  p-1"
+              onChange={handlePasswordChange}
             />
           </div>
 
