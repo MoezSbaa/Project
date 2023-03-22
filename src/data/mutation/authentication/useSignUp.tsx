@@ -4,13 +4,13 @@ import request from '../../../api/network';
 import useAuth from "../../../hooks/contexts/useAuth";
 import {AuthorizedPaths} from "../../../navigation/paths";
 
-export default function useLoginMutation(callback?: Callback<any>) {
+export default function useSignUp(callback?: Callback<any>) {
     const { userDidSignIn } = useAuth();
     const navigate= useNavigate()
     return useMutation({
         mutationFn: (data: any) => {
             return request<any>({
-                url: '/auth/signin',
+                url: '/auth/signup',
                 method: 'post',
                 data,
             });
@@ -19,7 +19,6 @@ export default function useLoginMutation(callback?: Callback<any>) {
             const { token } = response.data;
             localStorage.setItem("role",response.data.roles[0])
             navigate(AuthorizedPaths.dashboard)
-
             userDidSignIn(token);
         },
         onError() {

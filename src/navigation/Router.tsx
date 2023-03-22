@@ -7,12 +7,11 @@ import Loadable from "../components/Loadable";
 import Profile from '../pages/dashboard/Profile';
 import UserList from '../pages/dashboard/UserList';
 import NavBar from '../Layout/NavBar';
-import RegisterUser from '../pages/registeruser';
-import RegisterCoach from '../pages/registercoach';
 import AuthGuard from "../guards/AuthGuard";
 
 const About = Loadable(lazy(() => import('../pages/About')));
 const Login = Loadable(lazy(() => import('../pages/Login')));
+const Register = Loadable(lazy(() => import('../pages/register')));
 
 
 export default function Router() {
@@ -35,11 +34,11 @@ export default function Router() {
         },
         {
             path: UnauthorizedPaths.registerUser,
-            element: (<GuestGuard><RegisterUser/></GuestGuard>)
+            element: (<GuestGuard><Register/></GuestGuard>)
         },
         {
             path: UnauthorizedPaths.registerCoach,
-            element: (<GuestGuard><RegisterCoach/></GuestGuard>)
+            element: (<GuestGuard><Register/></GuestGuard>)
         },
         {
             path: AuthorizedPaths.dashboard,

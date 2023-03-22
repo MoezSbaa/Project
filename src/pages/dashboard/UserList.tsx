@@ -1,5 +1,6 @@
 import useGetUsers from "../../data/queries/useGetUsers";
 import Avatar from "../../assets/avatar.png"
+import useBlock from "../../data/mutation/block/useBlock";
 
 type Props = {
     role: string
@@ -7,7 +8,11 @@ type Props = {
 
 function UserList(props: Props) {
     const users = useGetUsers(props.role)
+    const {mutate} = useBlock()
+
     const role = localStorage.getItem("role")
+
+    const onBlock = (username: string) => mutate(username)
     return (
         <>
             <div className="h-full items-center justify-center w-full flex flex-col mt-4">
@@ -24,7 +29,8 @@ function UserList(props: Props) {
                                     <h3>Email: {user.email}</h3>
                                 </div>
                                 {role === "ROLE_ADMIN" ? <button
-                                    className="bg-[#9dca00] p-2 rounded-lg font-bold text-white">Block</button> : null}
+                                    onClick={() => onBlock(user.username)}
+                                    className={`${user.isBanned ? 'bg-red-600' : 'bg-[#9dca00]'} p-2 rounded-lg font-bold text-white`}>{user.isBanned ? 'UnBlock' : 'Block' }</button> : null}
                             </div>
                         )
                     })}

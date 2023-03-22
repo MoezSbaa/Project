@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLoginMutation from "../data/mutation/authentication/useLoginMutation";
+import {UnauthorizedPaths} from "../navigation/paths";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -57,8 +58,8 @@ const Login = () => {
             </button>
           </div>
           <span className="text-xl">Don't Have an account?</span>
-          <Link to="/registerUser" className="hover:text-[#9dca00]">Register as a client</Link>
-          <Link to="/registerCoach" className=" hover:text-[#9dca00]">Register as a coach</Link>
+          <Link to={UnauthorizedPaths.registerUser} className="hover:text-[#9dca00]">Register as a client</Link>
+          <Link to={UnauthorizedPaths.registerCoach} className=" hover:text-[#9dca00]">Register as a coach</Link>
         </form>
       </div>
     </main>
