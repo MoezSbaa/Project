@@ -5,6 +5,7 @@ import GuestGuard from "../guards/GuestGuard";
 import Splash from "../components/Splash";
 import Loadable from "../components/Loadable";
 import Login from '../pages/Login';
+import Profile from '../pages/Profile';
 const About = Loadable(lazy(() => import('../pages/About')));
 
 
@@ -20,7 +21,7 @@ export default function Router() {
         },
         {
             path: UnauthorizedPaths.login,
-            element: <Login/>
+            element: <Profile/>
         },
     ])
 }
