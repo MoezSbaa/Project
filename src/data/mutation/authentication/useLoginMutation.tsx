@@ -1,10 +1,11 @@
 import { useMutation } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 import request from '../../../api/network';
 import useAuth from "../../../hooks/contexts/useAuth";
 
 export default function useLoginMutation(callback?: Callback<any>) {
     const { userDidSignIn } = useAuth();
-
+    const navigate= useNavigate()
     return useMutation({
         mutationFn: (data: any) => {
             return request<any>({
@@ -14,9 +15,10 @@ export default function useLoginMutation(callback?: Callback<any>) {
             });
         },
         onSuccess(response) {
-            const { accessToken } = response.data;
+            const { token } = response.data;
+            navigate("/dashboard")
             callback?.(false, response.data);
-            userDidSignIn(accessToken);
+            userDidSignIn(token);
         },
         onError() {
             callback?.(true);

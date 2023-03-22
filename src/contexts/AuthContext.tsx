@@ -85,7 +85,7 @@ export function AuthContextProvider(props: PropsWithChildren) {
         };
     }, [state, userDidSignIn, userDidReconnect, userDidLogOut]);
 
-    useAccount((err) => {
+    useAccount("user",(err:any) => {
         if (err) {
             userDidLogOut();
             return;
