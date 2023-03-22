@@ -7,6 +7,8 @@ import Loadable from "../components/Loadable";
 import Profile from '../pages/Profile';
 import UserList from '../pages/dashboard/UserList';
 import NavBar from '../Layout/NavBar';
+import RegisterUser from '../pages/registeruser';
+import RegisterCoach from '../pages/registercoach';
 const About = Loadable(lazy(() => import('../pages/About')));
 const Login = Loadable(lazy(() => import('../pages/Login')));
 
@@ -37,6 +39,14 @@ export default function Router() {
                 <UserList role="user"/>
                 <UserList role="coach"/>
                 </div>
+        },
+        {
+            path: '/registerUser',
+            element: <RegisterUser />
+        },
+        {
+            path: '/registerCoach',
+            element: <RegisterCoach />
         },
     ])
 }
