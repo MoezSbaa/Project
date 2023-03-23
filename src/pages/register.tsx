@@ -25,6 +25,7 @@ const Register = () => {
 
     if (profileType === 'user') {
       signUp({
+        roles: [profileType],
         username,
         name,
         email,
@@ -37,6 +38,7 @@ const Register = () => {
     }
 
     signUp({
+      roles: [profileType],
       username,
       name,
       email,
@@ -164,7 +166,7 @@ const Register = () => {
           <input type="file" id="image"  />
         </div>
         {
-          profileType == 'coach' && (
+          profileType === 'coach' && (
               <>
                 <div className="flex justify-around items-center flex-wrap">
                   <label htmlFor="speciality">Speciality:</label>

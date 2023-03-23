@@ -5,4 +5,6 @@ type  Account = {
     phone: string,
     adress: string,
     specialite: string,
+    roles: any,
+    gender: 'male' | 'felmale',
 }
