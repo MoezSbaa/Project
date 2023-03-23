@@ -5,8 +5,7 @@ import useAuth from "../../../hooks/contexts/useAuth";
 import { UnauthorizedPaths } from '../../../navigation/paths';
 
 export default function useDeleteAccountMutation(callback?: Callback<any>) {
-    const { userDidSignIn } = useAuth();
-    const navigate= useNavigate()
+    const {  userDidLogOut } = useAuth();
     return useMutation({
         mutationFn: (data: any) => {
             return request<any>({
@@ -16,11 +15,7 @@ export default function useDeleteAccountMutation(callback?: Callback<any>) {
             });
         },
         onSuccess(response) {
-            const { token } = response.data;
-            localStorage.removeItem("token")
-            navigate(UnauthorizedPaths.login)
-            callback?.(false, response.data);
-            userDidSignIn(token);
+            userDidLogOut();
         },
         onError() {
             callback?.(true);
