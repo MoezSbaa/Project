@@ -57,9 +57,15 @@ const Login = () => {
               Login
             </button>
           </div>
+          <div>
+            <Link to={UnauthorizedPaths.forgetPassword} className="hover:text-[#9dca00]">Forget Password</Link>
+          </div>
+          <div className="flex flex-col text-center">
           <span className="text-xl">Don't Have an account?</span>
           <Link to={UnauthorizedPaths.registerUser} className="hover:text-[#9dca00]">Register as a client</Link>
           <Link to={UnauthorizedPaths.registerCoach} className=" hover:text-[#9dca00]">Register as a coach</Link>
+          </div>
+          
         </form>
       </div>
     </main>
