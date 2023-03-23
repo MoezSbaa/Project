@@ -3,6 +3,7 @@ import NavBar from "../../Layout/NavBar";
 import useAccount from "../../data/queries/authentication/useAccount";
 import useUpdateProfile from "../../data/mutation/profile/useUpdateProfile";
 import useDeleteAccountMutation from "../../data/mutation/authentication/useDeleteAccount";
+import useDeactivateAccountMutation from "../../data/mutation/authentication/useDeactivateAccount";
 
 function Profile() {
   const { data } = useAccount();
@@ -18,6 +19,7 @@ function Profile() {
 
   const { mutate } = useUpdateProfile();
  const {mutate:deleteUser} = useDeleteAccountMutation();
+ const {mutate:deactivateUser } = useDeactivateAccountMutation();
   const onUpdate = (e: any) => {
     if (data?.roles[0].name === "coach") {
       mutate({
@@ -46,7 +48,9 @@ function Profile() {
   const onDelete = (e:any) => {
     deleteUser({})
   }
-
+  const onDeactivate = (e:any) => {
+    deactivateUser({})
+  }
   return (
     <>
       <NavBar />
@@ -219,7 +223,7 @@ function Profile() {
                       Delete
                     </button>
                     <button
-                      onClick={onUpdate}
+                      onClick={onDeactivate}
                       className="bg-yellow-300 px-5 py-2 rounded text-white font-bold"
                     >
                       Deactivate
