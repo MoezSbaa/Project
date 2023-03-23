@@ -8,6 +8,8 @@ import Profile from '../pages/dashboard/Profile';
 import UserList from '../pages/dashboard/UserList';
 import NavBar from '../Layout/NavBar';
 import AuthGuard from "../guards/AuthGuard";
+import ForgetPassword from '../pages/ForgetPassword';
+import ResetPassword from '../pages/ResetPassword';
 
 const About = Loadable(lazy(() => import('../pages/About')));
 const Login = Loadable(lazy(() => import('../pages/Login')));
@@ -58,6 +60,14 @@ export default function Router() {
                 </AuthGuard>
             )
         },
+        {
+            path:UnauthorizedPaths.forgetPassword,
+            element: <ForgetPassword />
+        },
+        {
+            path:UnauthorizedPaths.resetPassword,
+            element: <ResetPassword />
+        }
 
     ])
 }
